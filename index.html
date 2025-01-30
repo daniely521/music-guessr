@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Guessr</title>
     <link rel="stylesheet" href="styles.css">
+    <audio src="sounds/sound1.mp3" id="audiog"></audio>
 </head>
 <body>
     <p id="Score" class="hidden">Score: 0</p>
     <h1>Music Guessr</h1>
     <p>Enter the name only!</p>
-    <input type="text" id="answer" class="hidden">
+    <input type="text" id="answer" class="hidden" placeholder="song name...">
+    <br>
     <button id="start-btn">Start</button>
-    <button id="replay-btn" class="hidden">Replay</button>
     <button id="submit-btn" class="hidden">Submit</button>
+    <button id="next-btn" class="hidden">Next</button>
     <p id="feedback"></p>
     <button id="home" class="hidden">return home</button>
     <script src="script.js"></script>

@@ -68,7 +68,7 @@ function checkAnswer() {
         scoreDisplay.textContent = `Score: ${score}`;
         feedback.textContent = `Correct!`
     } else {
-        feedback.textContent = `The song was: ${currentSong}`
+        feedback.textContent = `The song was: ${currentAns}`
     }
     currentSong = music[songindex].song;
     let audio1 = new Audio(currentSong);
@@ -76,12 +76,15 @@ function checkAnswer() {
     songindex++;
     lengthSong = 0;
     answerBox.value = '';
+    submitbtn.classList.add('hidden');
     next.classList.remove('hidden');
 }
 
 next.addEventListener('click', () => {
     playSong();
     next.classList.add('hidden');
+    submitbtn.classList.remove('hidden');
+    feedback.textContent = '';
 });
 
 function endGame() {
@@ -100,3 +103,10 @@ home.addEventListener('click', () => {
     submitbtn.classList.add('hidden');
     home.classList.add('hidden');
 })
+
+answerBox.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); 
+        submitbtn.click(); 
+    }
+});
