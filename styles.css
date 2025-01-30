@@ -62,7 +62,7 @@ h1 {
 }
 
 #next-btn {
-    background-color: #baffe8;
+    background-color: #c0ffba;
     color: #1a8350;
     width: 100px;
     height: 30px;
@@ -73,5 +73,5 @@ h1 {
 }
 
 #next-btn:hover {
-    background-color: #b0efda;
+    background-color: #b0efb0;
 }
