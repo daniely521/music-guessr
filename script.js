@@ -1,17 +1,30 @@
-const scoreDisplay = document.getElementById('score');
+const scoreDisplay = document.getElementById('Score');
 const answerBox = document.getElementById('answer');
 const startbtn = document.getElementById('start-btn');
-const replaybtn = document.getElementById('replay-btn');
 const submitbtn = document.getElementById('submit-btn');
 const feedback = document.getElementById('feedback');
 const home = document.getElementById('home');
+const next = document.getElementById('next-btn');
+const audiog = document.getElementById('audiog');
 
 const music = [
-    {song: "audio1", answer: "Blinding Lights"},
-    {song: "audio1", answer: "Blinding Lights"}
+    {song: 'sounds/sound1.mp3', answer: "Blinding Lights"},
+    {song: 'sounds/sound2.mp3', answer: "Shape of You"},
+    {song: 'sounds/sound3.mp3', answer: "Someone You Loved"},
+    {song: 'sounds/sound4.mp3', answer: "As It Was"},
+    {song: 'sounds/sound5.mp3', answer: "Starboy"},
+    {song: 'sounds/sound6.mp3', answer: "Sunflower"},
+    {song: 'sounds/sound7.mp3', answer: "Sweater Weather"},
+    {song: 'sounds/sound8.mp3', answer: "One Dance"},
+    {song: 'sounds/sound9.mp3', answer: "STAY"},
+    {song: 'sounds/sound10.mp3', answer: "Believer"},
+    {song: 'sounds/sound11.mp3', answer: "Heat Waves"},
+    {song: 'sounds/sound12.mp3', answer: "Perfect"},
+    {song: 'sounds/sound13.mp3', answer: "Dance Monkey"},
+    {song: 'sounds/sound14.mp3', answer: "lovely"},
+    {song: 'sounds/sound15.mp3', answer: "Say You Won't Let Go"}
 ];
 
-var audio1 = new Audio('sounds/sound1.mp3');
 
 let score = 0;
 let songindex = 0;
@@ -19,17 +32,14 @@ let currentSong;
 let currentAns;
 let lengthSong = 0;
 let playing = false;
+let audio1;
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 startbtn.addEventListener('click', ()=> {
     console.log('start button pressed');
     scoreDisplay.classList.remove('hidden');
     answerBox.classList.remove('hidden');
     startbtn.classList.add('hidden');
-    replaybtn.classList.remove('hidden');
     submitbtn.classList.remove('hidden');
     playSong();
 });
@@ -37,22 +47,19 @@ startbtn.addEventListener('click', ()=> {
 function playSong() {
     if (songindex < music.length) {
         currentSong = music[songindex].song;
+        audiog.src = currentSong;
         currentAns = music[songindex].answer;
-        currentSong.play();
-        sleep(1000);
-        currentSong.pause();
-        lengthSong+=1;
+        audiog.play();
+        console.log('song playing');
     } else {
         endGame();
     }
 }
 
-replaybtn.addEventListener('click', () => {
-    playSong();
-});
 
 submitbtn.addEventListener('click', () => {
     checkAnswer();
+    console.log('submit button pressed');
 });
 
 function checkAnswer() {
@@ -63,25 +70,33 @@ function checkAnswer() {
     } else {
         feedback.textContent = `The song was: ${currentSong}`
     }
+    currentSong = music[songindex].song;
+    let audio1 = new Audio(currentSong);
+    audiog.pause();
     songindex++;
     lengthSong = 0;
-    sleep(1000);
-    playSong();
+    answerBox.value = '';
+    next.classList.remove('hidden');
 }
+
+next.addEventListener('click', () => {
+    playSong();
+    next.classList.add('hidden');
+});
 
 function endGame() {
     scoreDisplay.classList.add('hidden');
     answerBox.classList.add('hidden');
-    replaybtn.classList.add('hidden');
     submitbtn.classList.add('hidden');
     home.classList.remove('hidden');
+    feedback.textContent = `your final score is ${score}`;
 }
 
 home.addEventListener('click', () => {
+    feedback.textContent = '';
     scoreDisplay.classList.add('hidden');
     answerBox.classList.add('hidden');
     startbtn.classList.remove('hidden');
-    replaybtn.classList.add('hidden');
     submitbtn.classList.add('hidden');
     home.classList.add('hidden');
 })
