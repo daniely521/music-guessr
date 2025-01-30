@@ -75,8 +75,3 @@ h1 {
 #next-btn:hover {
     background-color: #b0efb0;
 }
-#version {
-    position: fixed;
-    bottom: 5px;
-    right: 10px;
-}
