@@ -75,3 +75,22 @@ h1 {
 #next-btn:hover {
     background-color: #b0efb0;
 }
+
+#myinsta {
+    background-color: #aff8e0;
+    width: 70%;
+}
+
+#instadiv{
+    background-color: #aff8e0;
+    margin-top: 60px;
+    width: 60%;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 19px;
+    border-radius: 10px;
+}
